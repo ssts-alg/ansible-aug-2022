@@ -1,0 +1,16 @@
+---
+- hosts: 172.31.95.66
+  become: true
+  tasks:
+    - name: update os packages 
+      command: "apt-get update -y"
+      
+    - name: Intsalling packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - git
+        - apache2
+        - docker.io
+

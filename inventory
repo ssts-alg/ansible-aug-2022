@@ -1,0 +1,15 @@
+[ubuntu]
+172.31.95.66
+
+[ubuntu:vars]
+ansible_user=ubuntu
+ansible_private_key_file=./maven.pem
+
+[redhat]
+172.31.89.249
+172.31.94.244
+
+[redhat:vars]
+ansible_user=ec2-user 
+ansible_private_key_file=./maven.pem
+

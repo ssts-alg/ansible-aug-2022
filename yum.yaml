@@ -1,0 +1,22 @@
+---
+
+- name: Installing packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - git
+    - httpd
+- name: start apache
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+- name: Git checkout
+  ansible.builtin.git:
+    repo: 'https://github.com/ssts-alg/static_website.git'
+    dest: /var/www/html
+
+
+
+

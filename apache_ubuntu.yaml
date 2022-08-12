@@ -1,0 +1,20 @@
+---
+- hosts: ubuntu
+  become: true
+  tasks:
+    - name: Installing packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - git
+        - apache2
+    - name: start apache
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+    - name: Git checkout
+      ansible.builtin.git:
+        repo: 'https://github.com/ssts-alg/static_website.git'
+        dest: /var/www/html

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - include: yum.yaml
+      when: ansible_distribution == "Amazon"
+    - include: apt.yaml
+      when: ansible_distribution == "Ubuntu"
+    
+  
